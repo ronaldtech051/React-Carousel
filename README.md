@@ -1,20 +1,38 @@
-Contribution: 2023-05-09 10:00
+# React Carousel
 
-Contribution: 2023-05-09 10:01
+![Release](https://github.com/trendyol/react-carousel/actions/workflows/publish.yml/badge.svg)
+![Pre-Release](https://github.com/trendyol/react-carousel/actions/workflows/betapublish.yml/badge.svg)
+[![codecov.io](https://codecov.io/github/Trendyol/react-carousel/coverage.svg?branch=master)](https://codecov.io/github/Trendyol/react-carousel?branch=master)
+[![badgen.net](https://badgen.net/bundlephobia/minzip/@trendyol-js/react-carousel)](https://badgen.net/bundlephobia/minzip/@trendyol-js/react-carousel)
+[![npm version](https://badge.fury.io/js/%40trendyol-js%2Freact-carousel.svg)](https://badge.fury.io/js/%40trendyol-js%2Freact-carousel)
 
-Contribution: 2023-05-09 10:02
+Please visit to [docs website](https://trendyol.github.io/react-carousel/docs/installation) for more details.
 
-Contribution: 2023-05-09 10:03
+# Installation
 
-Contribution: 2023-05-09 10:04
+```
+npm i react react-dom @trendyol-js/react-carousel --save
+```
 
-Contribution: 2023-05-09 10:05
+# Usage
 
-Contribution: 2023-05-09 10:06
+```jsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Carousel } from '@trendyol-js/react-carousel';
+import { Item } from './yourItem';
 
-Contribution: 2023-05-09 10:07
+ReactDOM.render(
+	<Carousel>
+		<Item />
+		<Item />
+		<Item />
+		<Item />
+	</Carousel>,
+	document.getElementById('root'),
+);
+```
 
-Contribution: 2023-05-09 10:08
+# License
 
-Contribution: 2023-05-09 10:09
-
+Distributed under the MIT License. See `LICENSE` for more information.

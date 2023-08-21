@@ -1,0 +1,42 @@
+name: documentation
+
+on:
+    push:
+        paths:
+            - 'website/**'
+
+jobs:
+    checks:
+        if: github.event_name != 'push'
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v1
+            - uses: actions/setup-node@v1
+              with:
+                  node-version: '14.x'
+            - name: Test Build
+              working-directory: ./website
+              run: |
+                  yarn
+                  yarn build
+    gh-release:
+        if: github.event_name != 'pull_request'
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v1
+            - uses: actions/setup-node@v1
+              with:
+                  node-version: '14.x'
+            - uses: webfactory/ssh-agent@v0.5.0
+              with:
+                  ssh-private-key: ${{ secrets.GH_PAGES_DEPLOY }}
+            - name: Release to GitHub Pages
+              working-directory: ./website
+              env:
+                  USE_SSH: true
+                  GIT_USER: ${{ secrets.GIT_USER }}
+              run: |
+                  git config --global user.email "${{ secrets.GIT_MAIL }}"
+                  git config --global user.name "${{ secrets.GIT_USER }}"
+                  yarn
+                  yarn deploy
